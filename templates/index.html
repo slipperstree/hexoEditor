@@ -1,0 +1,121 @@
+$def with(wzList, text)
+
+<html>
+<head>
+<title>Hexo Editor OL</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/js/jquery.mobile-1.4.3.min.css">
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/jquery.mobile-1.4.3.min.js"></script>
+
+<script>
+jQuery(document).ready(
+	function(){
+		//jQuery("#div_new_title").hide();
+		//jQuery("#div_edit_title").hide();
+		
+	}
+);
+
+
+function add(){
+
+	// show add div
+	if (jQuery("#div_new_title").is(":hidden")) {
+		jQuery("#div_new_title").show(100);
+	}
+	else {
+		jQuery("#div_new_title").hide(100);
+	}
+	
+}
+
+function editWz(wz){
+	
+	jQuery("#filename").val(wz);
+	jQuery("#formEdit").submit();
+	
+}
+
+function delWz(wz){
+
+	alert("Delete " + wz);
+}
+
+function onClickWz(wz){
+	
+	if (jQuery("#" + wz).is(":visible")) {
+		jQuery("#" + wz).hide(50);
+	}
+	else {
+		jQuery("#" + wz).show(100);
+	}
+}
+</script>
+
+<style>
+	#custom-border-radius .ui-btn-icon-notext.ui-corner-all {
+		-webkit-border-radius: .3125em;
+		border-radius: .3125em;
+	}
+</style>
+	
+</head>
+
+<body>
+<div data-role="page">
+
+  <div data-role="header">
+    <h1>Hexo Editor v01</h1>
+  </div>
+
+  <div data-role="content">
+  $text
+  	
+  <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+    <a href="#" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-plus ui-btn-b" onClick="add()">Add</a>
+  </div>
+  
+  <div id="div_new_title" hidden>
+  	<form method="POST" action="/create">
+     <input type="text" data-clear-btn="true" name="text-new-title" id="text-new-title" placeholder="Input new title" value="" />
+     <input id="btn-add" type="submit" value="Add" />
+	</form>
+  </div>
+  
+  <div id="div_edit_title" hidden>
+  	<form>
+     <input type="search" data-clear-btn="true" name="text-edit-title" id="text-edit-title" placeholder="Search..." value="" />
+     <input id="btn-edit" type="submit" value="Search..." />
+	</form>
+  </div>
+  
+  
+  <div id="wzList">
+  $for wz, wzId in wzList:
+    <ul data-role="listview" data-inset="true">
+      <li>
+        <a href="#" onClick="onClickWz('$wzId')">$wz</a>
+        <div id="$wzId" hidden>
+          <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+            <a href="#" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-edit ui-btn-b" onClick="editWz('$wz')">Edit</a>
+            <a href="#" class="ui-shadow ui-btn ui-corner-all ui-btn-icon-left ui-icon-delete ui-btn-b" onClick="delWz('$wz')">Delete</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  
+  <div id="divEdit" hidden>
+  	<form method="POST" id="formEdit" action="/edit">
+     <input type="hidden" name="filename" id="filename" value="" />
+	</form>
+  </div>
+
+  <div data-role="footer">
+    <h1>Copyright 2014 By Chenling</h1>
+  </div>
+</div>
+</body>
+</html>

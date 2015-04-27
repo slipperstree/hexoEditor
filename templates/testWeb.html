@@ -1,0 +1,76 @@
+$def with (name)
+
+
+<html>
+<head>
+<title>Test webpy gpio</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/js/jquery.mobile-1.4.3.min.css">
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/jquery.mobile-1.4.3.min.js"></script>
+
+<script>
+//var j = jQuery.noConflict();
+jQuery(document).ready(function(){
+	jQuery("#idOn").click(function(){
+		jQuery.ajax({
+			url: "http://remotenet.gicp.net:8085/on",
+			cache: false,
+			async: false,
+			//error:function(XMLResponse){alert("Err:" + XMLResponse.status );}
+		});
+		//alert("sss");
+		//var result = eval("(" + data + ")");
+		//alert(result);
+	});
+	
+	jQuery("#idOff").click(function(){
+		jQuery.ajax({
+			url: "http://remotenet.gicp.net:8085/off",
+			cache: false,
+			async: false,
+			//error:function(XMLResponse){alert("Err:" + XMLResponse.status );}
+		});
+		//alert("sss");
+		//var result = eval("(" + data + ")");
+		//alert(result);
+	});
+});
+</script>
+
+<style>
+	#custom-border-radius .ui-btn-icon-notext.ui-corner-all {
+		-webkit-border-radius: .3125em;
+		border-radius: .3125em;
+	}
+</style>
+	
+</head>
+
+<body>
+<div data-role="page">
+
+  <div data-role="header">
+    <h1>Remote Light</h1>
+  </div>
+
+  <div data-role="content">
+  	
+  	<input id="idOn" type="button" value="ON" />
+  	
+	$if name:
+		I just wanted to say <em>hello</em> to $name.
+	$else:
+		<em>Hello</em>, world!
+		
+  	<input id="idOff" type="button" value="OFF" />
+
+  </div>
+
+  <div data-role="footer">
+    <h1>Copyright 2014 By Chenling</h1>
+  </div>
+</div>
+</body>
+</html>

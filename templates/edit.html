@@ -1,0 +1,52 @@
+$def with (fileName, content)
+
+
+<html>
+<head>
+<title>Edit Title | Hexo Editor OL</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/js/jquery.mobile-1.4.3.min.css">
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/jquery.mobile-1.4.3.min.js"></script>
+
+<script>
+</script>
+
+<style>
+	#custom-border-radius .ui-btn-icon-notext.ui-corner-all {
+		-webkit-border-radius: .3125em;
+		border-radius: .3125em;
+	}
+</style>
+	
+</head>
+
+<body>
+<div data-role="page">
+
+  <div data-role="header">
+    <h1>$fileName</h1>
+  </div>
+
+  <div data-role="content">
+  	
+  	<form method="POST" action="/update">
+	    <label for="content">Content:</label>
+	    <textarea name="content" id="content">$content</textarea>
+	    <input type="hidden" name="filename" id="filename" value="$fileName" />
+	    <input type="submit" value="Done" />
+	</form>
+	
+	<form method="POST" action="/gen_deploy">
+	    <input type="submit" value="Gen And Deploy!" />
+	</form>
+
+  </div>
+
+  <div data-role="footer">
+    <h1>Copyright 2014 By Chenling</h1>
+  </div>
+</div>
+</body>
+</html>

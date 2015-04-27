@@ -1,0 +1,46 @@
+$def with (newTitle, newContent)
+
+
+<html>
+<head>
+<title>New Title | Hexo Editor OL</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/static/js/jquery.mobile-1.4.3.min.css">
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/jquery.mobile-1.4.3.min.js"></script>
+
+<script>
+</script>
+
+<style>
+	#custom-border-radius .ui-btn-icon-notext.ui-corner-all {
+		-webkit-border-radius: .3125em;
+		border-radius: .3125em;
+	}
+</style>
+	
+</head>
+
+<body>
+<div data-role="page">
+
+  <div data-role="header">
+    <h1>$newTitle</h1>
+  </div>
+
+  <div data-role="content">
+  	
+  	<form>
+	    <label for="textarea-content">Content:</label>
+	    <textarea name="textarea-content" id="textarea-content">$newContent</textarea>
+	</form>
+
+  </div>
+
+  <div data-role="footer">
+    <h1>Copyright 2014 By Chenling</h1>
+  </div>
+</div>
+</body>
+</html>
